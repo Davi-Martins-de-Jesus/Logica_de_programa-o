@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nome = prompt("Informe seu Nome")
+        var nota1 = Number(prompt("Informe a nota 1"))
+        var nota2 = Number(prompt("Informe a nota 2"))
+        var total = nota1+nota2 
+        var media = total/2
+        alert ("a media é "+ media) 
+
+        if (media >=6){
+            alert("aprovado")
+        }
+        else if (media < 6 && media >= 4){
+            alert("em recuperação")
+        }
+        else if (media < 4){
+            alert("Reprovado")
+        }
+        else{
+            alert("Valores incorretos! Verifique as notas informadas.")
+        }
+</script>
+</body>
+</html>
