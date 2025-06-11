@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joguinho</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #game-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .square {
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            display: inline-block;
+        }
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clique no quadrado vermelho!</h1>
+    <div id="game-container"></div>
+    <p id="message"></p>
+
+    <script>
+        function createSquares() {
+            const container = document.getElementById("game-container");
+            container.innerHTML = "";
+            for (let i = 0; i < 9; i++) {
+                const square = document.createElement("div");
+                square.classList.add("square");
+                square.addEventListener("click", () => checkClick(square));
+                container.appendChild(square);
+            }
+            highlightRandomSquare();
+        }
+
+        function highlightRandomSquare() {
+            const squares = document.querySelectorAll(".square");
+            const randomIndex = Math.floor(Math.random() * squares.length);
+            squares[randomIndex].classList.add("red");
+
+            setTimeout(() => {
+                squares[randomIndex].classList.remove("red");
+                createSquares();
+            }, 1000);
+        }
+
+        function checkClick(square) {
+            if (square.classList.contains("red")) {
+                document.getElementById("message").innerText = "Boa! Você clicou no certo!";
+            } else {
+                document.getElementById("message").innerText = "Errou! Tente de novo.";
+            }
+        }
+
+        createSquares();
+    </script>
+</body>
+</html>
