@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Regras de Brincar</title>
+</head>
+<body>
+  <script>
+    const idade = Number(prompt("Digite sua idade:"));
+    const altura = Number(prompt("Digite sua altura em metros (ex: 1.60):"));
+    const peso = Number(prompt("Digite seu peso em kg:"));
+
+    if (isNaN(idade) || isNaN(altura) || isNaN(peso)) {
+      alert("Coloque números válidos, mano.");
+    } else if (idade <= 12) {
+      alert("Se for criança, não pode brincar.");
+    } else if (peso > 100) {
+      alert("Tá pesado demais, não pode brincar.");
+    } else if (altura > 2.50) {
+      alert("Altura máxima é 2,50m, não pode brincar.");
+    } else {
+      alert("Pode brincar, partiu diversão!");
+    }
+  </script>
+</body>
+</html>

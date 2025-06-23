@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cálculo Fatorial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #tela {
+      background-color: #555;
+      padding: 30px 50px;
+      border-radius: 10px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      width: 300px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #222;
+      color: white;
+      border: none;
+      padding: 15px 0;
+      width: 100%;
+      font-size: 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #444;
+    }
+
+    button:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      min-height: 30px;
+    }
+
+    .error {
+      color: #ff6666;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="tela">
+    <h1>Cálculo Fatorial</h1>
+    <input type="number" id="numero" placeholder="Digite um número inteiro" />
+    <button id="botao">Calcular</button>
+    <p id="resultado"></p>
+    <p id="erro" class="error"></p>
+  </div>
+
+  <script>
+    const botao = document.getElementById('botao');
+    const input = document.getElementById('numero');
+    const resultado = document.getElementById('resultado');
+    const erro = document.getElementById('erro');
+
+    function calcularFatorial(n) {
+      let fatorial = 1;
+      for (let i = 2; i <= n; i++) {
+        fatorial *= i;
+      }
+      return fatorial;
+    }
+
+    botao.addEventListener('click', () => {
+      erro.textContent = '';
+      resultado.textContent = '';
+
+      const valor = parseInt(input.value);
+
+      if (isNaN(valor) || valor < 0) {
+        erro.textContent = 'Por favor, insira um número inteiro positivo.';
+        return;
+      }
+
+      botao.disabled = true;
+      botao.style.backgroundColor = 'gray';
+
+      const fatorial = calcularFatorial(valor);
+
+      resultado.textContent = `Fatorial de ${valor} é ${fatorial}`;
+
+      setTimeout(() => {
+        botao.disabled = false;
+        botao.style.backgroundColor = '#222';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
